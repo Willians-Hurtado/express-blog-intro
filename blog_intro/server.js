@@ -2,13 +2,14 @@ const express = require('express');
 const app = express()
 const port = 3001
 
+app.use('/asset', express.static('asset'))
+
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)
 })
 
 app.get('/', (req, res) => {
-    console.log(res);
-    
+
     res.send(`Server del mio blog`)
 })
 
@@ -29,31 +30,32 @@ app.get('/api/v1/dolci', (req, res) => {
         {
             Title: 'Pane fritto dolce',
             img: '/asset/img/pane_fritto_dolce.jpeg',
-            Tags: ["Pane fritto dolce", "dolci", "colazione", "merenda", "soffice"],
+            Tags: ["pane fritto", "dolci", "colazione", "merenda", "soffice"],
                 
         },
         {
             Title: 'Pasta barbabietola',
             img: '/asset/img/pasta_barbabietola.jpeg',
-            Tags: ["Pasta barbabietola", "dolci", "colazione", "merenda", "soffice"],
+            Tags: ["pasta", "barbabietola", "dolci", "colazione", "merenda"],
                 
         },
         {
             Title: 'Torta paesana',
             img: '/asset/img/torta_paesana.jpeg',
-            Tags: ["Torta paesana", "dolci", "colazione", "merenda", "soffice"],
+            Tags: ["torta", "paesana", "dolci", "colazione", "merenda"],
                 
         },
-            
+          
+        
     ]
     
-        
-    console.log(dolci);
     res.json(dolci);
         
 })
 
-    
+app.get("/bacheca", (req, res) => {
+        res.json(dolci);
+      });    
     
     
 
